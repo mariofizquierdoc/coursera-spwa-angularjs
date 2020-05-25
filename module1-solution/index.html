@@ -14,13 +14,18 @@
       <section class="col-sm-12 col-md-6">
         <div class="header">Lunch Items</div>
         <div class="body">
-          <input type="text" ng-model="items" />
+          (I AM NOT CONSIDERING EMPTY COMMA SEPARATED ITEMS AS SUCH:
+          <br />
+          IF YOU PUT "apples, oranges, , , pears"
+          I WILL ONLY COUNT 3 ITEMS!!!)
+          <br />
+          <input type="text" ng-model="items" class="border-{{status}}" />
           <button ng-click="checkItems()">Check if too much!</button>
         </div>
       </section>
       <section class="col-sm-12 col-md-6">
         <div class="header">Lunch Checker's message:</div>
-        <div class="body">{{message}}</div>
+        <div class="body message-body message-{{status}}">{{message}}</div>
       </section>
     </div>
   </div>

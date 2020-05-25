@@ -10,11 +10,14 @@ LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
 	$scope.items = "";
 	$scope.message = "";
+	$scope.status = "";
 
 	$scope.checkItems = function() {
 		if ($scope.items == "") {
 			$scope.message = "Please enter data first";
+			$scope.status = "empty";
 		} else {
+			$scope.status = "correct";
 			var items = $scope.items.split(",");
 			var totalCount = 0;
 

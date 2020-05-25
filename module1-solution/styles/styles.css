@@ -6,4 +6,29 @@ h1 {
 .header	{
 	font-size: 20px;
 	font-weight: bold;
+	padding: 15px;
+}
+
+.body {
+	padding: 15px;
+}
+
+.message-body {
+	background: #999;
+}
+
+.message-correct {
+	color: #070;
+}
+
+.message-empty {
+	color: #900;
+}
+
+.border-correct {
+	border: 1px solid green;
+}
+
+.border-empty {
+	border: 1px solid red;
 }
