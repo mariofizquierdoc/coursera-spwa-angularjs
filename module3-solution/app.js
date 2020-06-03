@@ -36,8 +36,8 @@ function NarrowItDownController(MenuSearchService) {
     }
     else
     {
-      console.log('hi');
       narrowItDown.found = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
+      console.log(narrowItDown.found);
       if (narrowItDown.found.length == 0)
       {
         // Display message: not found (again)
