@@ -13,11 +13,13 @@ function FoundItemsDirective() {
     templateUrl: 'foundItems.html',
     scope: {
       items: '<',
-      onRemove: '&'
+      onRemove: '&',
+      notFoundMessage: '<',
     },
     controller: NarrowItDownDirectiveController,
     controllerAs: 'narrowItDown',
-    bindToController: true
+    bindToController: true,
+    transclude: true
   };
 
   return ddo;
@@ -34,11 +36,12 @@ function NarrowItDownController(MenuSearchService) {
 
   narrowItDown.found = [];
   narrowItDown.searchTerm = "";
+  narrowItDown.notFoundMessage = "";
 
   narrowItDown.getMatchedMenuItems = function () {
     if (narrowItDown.searchTerm.trim() == "")
     {
-      // Display message: not found
+      narrowItDown.notFoundMessage = "Not found";
     }
     else
     {
@@ -51,7 +54,7 @@ function NarrowItDownController(MenuSearchService) {
       });
       if (narrowItDown.found.length == 0)
       {
-        // Display message: not found (again)
+        narrowItDown.notFoundMessage = "Not found";
       }
     }
   };
