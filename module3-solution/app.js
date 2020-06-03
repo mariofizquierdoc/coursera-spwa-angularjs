@@ -13,7 +13,7 @@ function FoundItemsDirective() {
     templateUrl: 'foundItems.html',
     scope: {
       items: '<',
-      onRemove: '&'
+      onRemove: '&removeItem'
     },
     controller: NarrowItDownDirectiveController,
     controllerAs: 'narrowItDown',
