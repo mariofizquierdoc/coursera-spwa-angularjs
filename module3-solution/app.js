@@ -41,6 +41,7 @@ function NarrowItDownController(MenuSearchService) {
   narrowItDown.getMatchedMenuItems = function () {
     if (narrowItDown.searchTerm.trim() == "") {
       narrowItDown.notFoundMessage = "Not found";
+      narrowItDown.found = [];
     } else {
       var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
 
@@ -53,7 +54,7 @@ function NarrowItDownController(MenuSearchService) {
         } else {
           narrowItDown.notFoundMessage = "";
         }
-        
+
       }).catch(function (error) {
         console.log("Something went terribly wrong.");
       });
