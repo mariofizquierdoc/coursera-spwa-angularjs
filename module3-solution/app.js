@@ -39,23 +39,24 @@ function NarrowItDownController(MenuSearchService) {
   narrowItDown.notFoundMessage = "";
 
   narrowItDown.getMatchedMenuItems = function () {
-    if (narrowItDown.searchTerm.trim() == "")
-    {
+    if (narrowItDown.searchTerm.trim() == "") {
       narrowItDown.notFoundMessage = "Not found";
-    }
-    else
-    {
+    } else {
       var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
 
       promise.then(function (response) {
+
         narrowItDown.found = response;
+
+        if (narrowItDown.found.length == 0) {
+          narrowItDown.notFoundMessage = "Not found";
+        } else {
+          narrowItDown.notFoundMessage = "";
+        }
+        
       }).catch(function (error) {
         console.log("Something went terribly wrong.");
       });
-      if (narrowItDown.found.length == 0)
-      {
-        narrowItDown.notFoundMessage = "Not found";
-      }
     }
   };
 
