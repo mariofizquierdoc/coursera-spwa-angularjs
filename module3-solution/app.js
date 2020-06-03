@@ -13,11 +13,11 @@ function FoundItemsDirective() {
     templateUrl: 'foundItems.html',
     scope: {
       items: '<',
-      onRemove: '&removeItem'
+      onRemove: '&'
     },
     controller: NarrowItDownDirectiveController,
     controllerAs: 'narrowItDown',
-    bindToController: true,
+    bindToController: true
   };
 
   return ddo;
