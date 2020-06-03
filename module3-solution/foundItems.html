@@ -1,5 +1,16 @@
-<ul>
-  <li ng-repeat="item in narrowItDown.items">Name: {{ item.name }}, Short Name: {{ item.short_name }}, Description: {{ item.description }} <button ng-click="narrowItDown.onRemove({index: $index});">Don't want this one!</button></li>
-</ul>
+<div class="row">
+  <div class="col-xs-3"><h4>Name:</h4></div>
+  <div class="col-xs-2"><h4>Short Name:</h4></div>
+  <div class="col-xs-5"><h4>Description:</h4></div>
+  <div class="col-xs-2"></div>
+</div>
 
-<div ng-transclude></div>
+<div class="row" ng-repeat="item in narrowItDown.items">
+  <div class="col-xs-3">{{ item.name }}</div>
+  <div class="col-xs-2">{{ item.short_name }}</div>
+  <div class="col-xs-5">{{ item.description }}</div>
+  <div class="col-xs-2"><button class="btn btn-error" ng-click="narrowItDown.onRemove({index: $index});">Don't want this one!</button></div>
+</div>
+<!--   <li ng-repeat="item in narrowItDown.items">Name: {{ item.name }}, Short Name: {{ item.short_name }}, Description: {{ item.description }} <button ng-click="narrowItDown.onRemove({index: $index});">Don't want this one!</button></li>
+ -->
+<div class="error" ng-transclude></div>
