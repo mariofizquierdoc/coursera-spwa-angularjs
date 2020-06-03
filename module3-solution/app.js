@@ -36,8 +36,13 @@ function NarrowItDownController(MenuSearchService) {
     }
     else
     {
-      narrowItDown.found = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
-      console.log(narrowItDown.found);
+      var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
+
+      promise.then(function (response) {
+        narrowItDown.found = response;
+      }).catch(function (error) {
+        console.log("Something went terribly wrong.");
+      });
       if (narrowItDown.found.length == 0)
       {
         // Display message: not found (again)
@@ -57,21 +62,21 @@ function MenuSearchService($http, ApiBasePath) {
 
   service.getMatchedMenuItems = function (searchTerm) {
 
-    return ($http({
+    return $http({
 
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
 
     }).then(function (response) {
       
-      var items = response.data;
+      var items = response.data.menu_items;
       var foundItems = [];
       
       for (var i = 0; i < items.length; i++) {
       
         var item = items[i];
       
-        if (item.description.search(searchTerm) == -1) {
+        if (item.description.search(searchTerm) != -1) {
           foundItems.push(item);
         }
       
@@ -79,7 +84,7 @@ function MenuSearchService($http, ApiBasePath) {
 
       return foundItems;
 
-    }));
+    });
 
   };
 
