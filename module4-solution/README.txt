@@ -1,0 +1,1 @@
+This is the solution for module 4 assignment on the Single Page Web Application with AngularJS Course.
