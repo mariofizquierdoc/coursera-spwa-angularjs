@@ -1,0 +1,5 @@
+<ul class="list-group">
+  <li ng-repeat="category in $ctrl.categories" class="list-group-item">
+    {{ category.name }} - <button ui-sref="categories.items({categoryId: $index})" class="btn btn-info">See items</button>
+  </li>
+</ul>
