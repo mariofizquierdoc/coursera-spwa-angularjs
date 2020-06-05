@@ -25,7 +25,17 @@
     .state('categories.items', {
       url: '/items/{categoryId}',
       templateUrl: 'src/templates/main-items.template.html',
-      controller: "ItemsController as itco"
+      controller: "ItemsController as itco",
+      params: { categoryId: null },
+      resolve: {
+        items: [
+          '$stateParams', 'MenuDataService', 'categories', function ($stateParams, MenuDataService, categories) {
+            console.log($stateParams);
+            var category = categories[$stateParams.categoryId];
+            return MenuDataService.getItemsForCategory(category.short_name);
+          }
+        ]
+      }
     });
   }
 })();
