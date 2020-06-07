@@ -1,0 +1,27 @@
+<div class="container">
+  <div ng-if="myInfoCtrl.empty()">
+    <div class="alert alert-danger" role="alert">
+      Not signed up yet! <a ui-sref="public.signup">Sign up now!</a>
+    </div>
+  </div>
+  <div class="row" ng-if="!myInfoCtrl.empty()">
+    <div class="col-xs-12 col-xs-offset-0 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <h3 class="text-center">Your Information:</h3>
+      <dl class="dl-horizontal">
+        <dt>First Name: </dt>
+        <dd>{{ myInfoCtrl.first_name }}</dd>
+        <dt>Last Name: </dt>
+        <dd>{{ myInfoCtrl.last_name }}</dd>
+        <dt>Email: </dt>
+        <dd>{{ myInfoCtrl.email }}</dd>
+        <dt>Phone: </dt>
+        <dd>{{ myInfoCtrl.phone }}</dd>
+        <dt>Favorite Dish: </dt>
+        <dd>{{ myInfoCtrl.favorite_dish.name }}</dd>
+      </dl>
+      <div class="centered">
+        <img ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.favorite_dish.short_name}}.jpg" alt="{{myInfoCtrl.favorite_dish.name}}" class="img-responsive img-centered">
+      </div>
+    </div>
+  </div>
+</div>
